@@ -1,0 +1,334 @@
+ /* body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding-top: 60px;
+      min-height: 100vh;
+    } */
+
+    
+
+    /* Navbar */
+.admin .navbar-custom {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background-color: #0277bd; /* Calm hospital blue */
+      color: white;
+      z-index: 1100;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+.admin .navbar-custom .navbar-brand,
+    .navbar-custom .navbar-text,
+    .navbar-custom .nav-link {
+      color: #ffffff !important;
+      font-weight: bold;
+    }
+
+.admin .navbar-toggler {
+      background-color: #01579b;
+      border: none;
+      color: white;
+    }
+
+    /* Toggle button for sidebar (for small devices) */
+.admin .btn-toggle {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background-color: #0277bd;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      z-index: 1150;
+    }
+
+    /* Sidebar */
+.admin .sidebar {
+      position: fixed;
+      top: 60px;
+      left: 0;
+      height: calc(100vh - 60px);
+      width: 250px;
+      background-color: #1e293b;
+      padding-top: 20px;
+      color: #fff;
+      overflow-y: auto;
+      z-index: 1050;
+      transition: transform 0.3s ease;
+    }
+
+.admin .sidebar h4 {
+      text-align: center;
+      color: #4fc3f7;
+      margin-bottom: 30px;
+      font-weight: bold;
+    }
+
+.admin .sidebar .nav-link {
+      color: #cbd5e1;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+
+.admin .sidebar .nav-link:hover,
+    .sidebar .nav-link.active {
+      background-color: #334155;
+      color: #4fc3f7;
+    }
+
+.admin .sidebar .nav-link i {
+      margin-right: 10px;
+    }
+
+.admin .submenu {
+      display: none;
+      flex-direction: column;
+      padding-left: 30px;
+    }
+
+.admin .submenu a {
+      font-size: 14px;
+      color: #94a3b8;
+      padding: 6px 0;
+      text-decoration: none;
+    }
+
+.admin .submenu a:hover {
+      color: #f1f5f9;
+    }
+
+.admin input[type="checkbox"] {
+      display: none;
+    }
+
+.admin input[type="checkbox"]:checked + label + .submenu {
+      display: flex;
+    }
+
+.admin .main-content {
+      margin-left: 250px;
+      padding: 30px;
+      transition: margin-left 0.3s ease;
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 768px) {
+      .admin .sidebar {
+        transform: translateX(-100%);
+        width: 100%;
+      }
+
+      .admin .sidebar.show {
+        transform: translateX(0);
+      }
+
+      .admin .main-content {
+        margin-left: 0;
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 768px) {
+  .admin .navbar-custom {
+    display: none;
+  }
+
+  
+}
+
+/* Mobile Top Bar */
+.admin .mobile-bar {
+  display: none;
+  background-color: #0277bd;
+  color: white;
+  height: 60px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1100;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+  .admin .sidebar img {
+      display: block;
+      margin: 0 auto;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #facc15;
+    }
+
+    .admin .admin-name {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 10px;
+      font-size: 16px;
+      color: #facc15;
+    }
+
+/* Show Mobile Bar only on small screens */
+@media (max-width: 768px) {
+  .admin .navbar-custom {
+    display: none;
+  }
+
+  .admin .mobile-bar {
+    display: flex;
+  }
+}
+
+/* admin home css */
+ .adminhome {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(-45deg, #43cea2, #185a9d, #bbadaf, #2193b0);
+  background-size: 400% 400%;
+  animation: gradientShift 20s ease infinite;
+  min-height: 100vh;
+  
+  margin: 0;
+  position: relative;
+}
+
+/* Animated gradient */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  25% { background-position: 50% 50%; }
+  50% { background-position: 100% 50%; }
+  75% { background-position: 50% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Optional: glass effect layer */
+ .adminhome::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.05); /* Light glass tint */
+  backdrop-filter: blur(10px); 
+  -webkit-backdrop-filter: blur(10px);
+  z-index: -1;
+}
+
+
+.adminhome .page-wrapper {
+      margin-left: 250px;
+      padding-top: 35px;
+      transition: margin-left 0.3s ease;
+      
+    }
+
+    @media (max-width: 768px) {
+      .adminhome .page-wrapper {
+        margin-left: 0;
+      }
+    }
+
+    .adminhome .admin-card {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+    }
+
+    .adminhome .admin-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    }
+
+    .adminhome .admin-card .card-content {
+      padding: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .adminhome .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .adminhome .header-logo {
+      font-size: 2.5rem;
+      color: #f1c40f;
+    }
+
+    .adminhome .text-dark {
+      color: #1e272e !important;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .adminhome .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    .adminhome .feature-card {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      position: relative;
+      backdrop-filter: blur(8px);
+    }
+
+    .adminhome .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .adminhome .feature-card i {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .adminhome .feature-card h4 {
+      color: #2d3436;
+      font-weight: 600;
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+
+    .adminhome .feature-card p {
+      color: #f5f6fa;
+    }
+
+    .adminhome .feature-card:nth-child(1) i { color: #e67e22; }
+    .adminhome .feature-card:nth-child(2) i { color: #9b59b6; }
+    .adminhome .feature-card:nth-child(3) i { color: #1abc9c; }
+
+    .adminhome .gradient-divider {
+      height: 4px;
+      width: 100px;
+      background: linear-gradient(90deg, #f1c40f, #f39c12, #e67e22);
+      background-size: 200% 100%;
+      border-radius: 3px;
+      animation: gradientShift 4s ease-in-out infinite;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
