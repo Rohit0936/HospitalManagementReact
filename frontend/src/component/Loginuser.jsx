@@ -11,6 +11,7 @@ let Loginuser = () => {
   let [flag,setFlag]=useState(true);
 
   let login=(e)=>{
+   
     e.preventDefault();
     let username=e.target[0].value;
     let password=e.target[1].value;
@@ -47,7 +48,7 @@ let Loginuser = () => {
         {/* Right: Login Form */}
         <div className="form-section">
           <form onSubmit={login}>
-            {flag?"":(<label htmlFor="" className="msg">Invalid username or password</label>)}
+            <label htmlFor="" id={flag?"":"msgcolor"} className="msg">{flag?"":"Invalid username or password"}</label>
             
            <div style={{display:"flex",justifyContent:"space-between"}}><h1>Sign In</h1> <Link style={{textDecoration:"none"}} to="/">❌</Link></div> 
 

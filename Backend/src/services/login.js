@@ -2,9 +2,9 @@ let model=require("../model/regmodel");
 
 class login{
 
-     login(...data)
+     login(data)
     {
-      return model.login(data[0]); 
+      return model.login(data); 
     }
 }
 

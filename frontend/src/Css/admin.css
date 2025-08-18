@@ -1,13 +1,4 @@
- /* body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding-top: 60px;
-      min-height: 100vh;
-    } */
 
-    
-
-    /* Navbar */
 .admin .navbar-custom {
       position: fixed;
       top: 0;
@@ -24,6 +15,7 @@
     .navbar-custom .navbar-text,
     .navbar-custom .nav-link {
       color: #ffffff !important;
+     
       font-weight: bold;
     }
 

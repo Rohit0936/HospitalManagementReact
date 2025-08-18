@@ -7,7 +7,7 @@ let controller=require("../controller/regControl.js");
 let storage=multer.diskStorage({
     destination:function(req,file,cb)
     {
-        cb(null,'C:/ReactProject/HospitalManagementReact-main/frontend/public/upload');
+        cb(null,'C:/ReactProject/HospitalManagementReact/frontend/public/upload');
     },
 
     filename:function(req,file,cb)
@@ -19,7 +19,8 @@ let storage=multer.diskStorage({
 
 let upload=multer({storage:storage});
 
-router.post("/savereg",upload.single("image"),controller.regata)
+router.post("/savereg",upload.single("image1"),controller.regata)
 router.post("/login",controller.login);
+router.get("/checkUser",controller.checkUser);
 
 module.exports=router;

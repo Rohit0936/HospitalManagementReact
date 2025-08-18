@@ -8,6 +8,9 @@ import { useState } from "react";
 let Reg=()=>{
   //Form Validation 
   let [name,setName]=useState(true);
+  let [email,setEmail]=useState(true);
+  let [contact,setContact]=useState(true);
+  let [password,setPassword]=useState(true);
    let namevalid=(e)=>
    {
      if(e.length==0)
@@ -54,7 +57,50 @@ let Reg=()=>{
 
   let emailValid=(e)=>{
      nameEdit()
-     
+    email=true;
+    
+     if((e.endsWith("@gmail.com") || e.endsWith("@gmail.in" || e.length==0)) && email && !e.includes("..") && !e.includes("@@") && (e.lastIndexOf("@")==e.indexOf("@")))
+     {
+         //console.log(e,"====>",email)
+          setEmail(true);
+     }
+     else
+     {
+      if(e.length==0)
+      {
+        setEmail(true);
+      }
+      else
+      {
+        setEmail(false)
+      }
+      
+     }
+  }
+
+  let validContact=(e)=>{
+    nameEdit()
+    if(e.length==10 || e.length==0)
+    {
+      setContact(true)
+    }
+    else
+    {
+       setContact(false)
+    }
+  }
+
+  let compare=(e)=>{
+
+       let pass=document.getElementById("pass").value;
+       if(pass==e)
+       {
+        setPassword(true);
+       }
+       else
+       {
+        setPassword(false);
+       }
   }
   // form validation
 
@@ -70,25 +116,26 @@ let Reg=()=>{
       
     }
 
-    let savereg=(e)=>{
-        e.preventDefault();
-        //alert("hello");
-        //console.log(e);
-        let name=e.target[0].value;
-        let email=e.target[1].value;
-        let contact=e.target[2].value;
-        let password=e.target[3].value;
-        let comPassword=e.target[4].value;
-        let image=e.target[5].files[0];
+  let savereg=(e)=>{
+      e.preventDefault();
+      if(name && email && contact && password)
+      {
+    
+       
+        let name1=e.target[0].value;
+        let email1=e.target[1].value;
+        let contact1=e.target[2].value;
+        let password1=e.target[3].value;
+        let image1=e.target[5].files[0];
+       
+        let data={name1,email1,contact1,password1,image1};
 
-        let data={name,email,contact,password,comPassword,image};
-        //alert("hello");
-         ApiServices.savereg(data)
+        ApiServices.savereg(data)
       .then((res) => {
         if(res.data)
         {
           // console.log("Registration successful:", res.data);
-           navigate("/"); 
+           navigate("/login"); 
         }
         else
         {
@@ -99,8 +146,11 @@ let Reg=()=>{
       .catch((err) => {
         console.error("Registration error:", err);
       });
-          
-               
+      }
+      else
+      {
+        alert("Restration Failed..")
+      }     
     }
     return<>
     <div className="container-fliud" id="reg">
@@ -113,27 +163,27 @@ let Reg=()=>{
   </div>
 
   <div className="mb-3">
-    <label  className="form-label">📧 Email:</label>
+    <label  className="form-label">📧 Email:</label><label htmlFor="" style={{marginLeft:"10px",color:"red"}}>{email?"":"Inavlid email"}</label>
     <input type="email" className="form-control" id="email" autoComplete="off" onClick={nameEdit} onKeyUp={(e)=>emailValid(e.target.value)} required/>
   </div>
 
   <div className="mb-3">
-    <label  className="form-label">📱 Contact:</label>
-    <input type="Number" className="form-control" aria-describedby="emailHelp" autoComplete="off" required/>
+    <label  className="form-label">📱 Contact:</label><label htmlFor="" style={{marginLeft:"10px",color:"red"}}>{contact?"":"Inavlid Contact"}</label>
+    <input type="Number" className="form-control" aria-describedby="emailHelp" onClick={nameEdit} autoComplete="off" onKeyUp={(e)=>validContact(e.target.value)} required/>
   </div>
 
   <div className="mb-3">
     <label className="form-label">🔑 Password:</label>
-    <input type="password" className="form-control" aria-describedby="emailHelp"  required/>
+    <input type="password" id="pass" className="form-control" onClick={nameEdit} aria-describedby="emailHelp"  required/>
   </div>
   <div className="mb-3">
-    <label className="form-label">✅ Confirm Password:</label>
-    <input type="password" className="form-control"  aria-describedby="emailHelp" required/>
+    <label className="form-label">✅ Confirm Password:</label><label htmlFor="" style={{marginLeft:"10px",color:"red"}}>{password?"":"Password not match"}</label>
+    <input type="password" className="form-control" onClick={nameEdit}  aria-describedby="emailHelp" onKeyUp={(e)=>compare(e.target.value)} required/>
   </div>
   <div className="mb-3">
     <div className="image" id="img"></div>
     <label className="form-label">🖼️ Upload Image:</label>
-    <input type="file" className="form-control" aria-describedby="emailHelp" onChange={(e)=>addImg(e)} required/>
+    <input type="file" className="form-control" onClick={nameEdit} aria-describedby="emailHelp" onChange={(e)=>addImg(e)} required/>
   </div>
     <div className="mb-3">
     <input type="Submit" style={{backgroundColor:"blue",color:"white"}} className="form-control" />

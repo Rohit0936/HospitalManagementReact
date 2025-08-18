@@ -49,7 +49,7 @@
 /* Right Section (Form) */
 .form-section {
   flex: 1;
-  padding: 40px;
+  padding: 30px;
 }
 
 .form-section h1 {
@@ -87,15 +87,20 @@
 
 .login-page .msg
 { 
+   position:relative;
  width:100%;
  display:flex;
  justify-content: center;
  color: black;
- border-radius: 20px;
+ /* background-color: pink; */
+ border-radius: 10px;
  align-items: center;
-  background-color:pink;
   height:40px;
 } 
+
+#msgcolor{
+  background-color: pink;
+}
 
 .signup-text {
   margin-top: 15px;

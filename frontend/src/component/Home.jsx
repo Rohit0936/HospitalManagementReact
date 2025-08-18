@@ -3,11 +3,27 @@ import ReactDom from "react-dom";
 import "../Css/home.css";
 import {Link } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import ApiServices from "../services/ApiServices";
 
+
+let checkUser=()=>{
+//alert("hello");
+   let navigate=useNavigate();
+   ApiServices.checkUser().then((result)=>{
+    if(result.data.role=="Admin")
+    {
+      //console.log()
+      navigate("/admin",{state:{userdata:result.data}})
+    }
+    
+   }).catch((err)=>{
+       console.log(err);
+   });
+}
 let Home=()=>{
+  checkUser();
   const [isOpen, setIsOpen] = useState(false);
-
- 
     return<>
       <nav className="navbar navbar-expand-lg navbar-dark navbar-custom">
     <div className="container-fluid">

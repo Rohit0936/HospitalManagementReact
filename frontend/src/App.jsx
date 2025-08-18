@@ -12,13 +12,13 @@ let App=()=>{
    
    <BrowserRouter>
      
-       <Routes>
-         <Route path="/" element={<Home/>}/>
-        <Route path="/about" element={<About/>}/>
-       <Route path="/registration" element={<Registration/>}/>
-       <Route path="login" element={<Loginuser/>}/>
-       <Route path="admin" element={<Admin/>}></Route>
-       </Routes>
+      <Routes>
+      <Route path="/" element={<Home/>}/>
+      <Route path="/about" element={<About/>}/>
+      <Route path="/registration" element={<Registration/>}/>
+      <Route path="login" element={<Loginuser/>}/>
+      <Route path="admin" element={<Admin/>}></Route>
+      </Routes>
    </BrowserRouter>
    </>
 }
