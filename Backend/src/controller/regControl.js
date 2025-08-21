@@ -17,7 +17,7 @@ exports.regata = ((req, res) => {
     let r = new regService();
     let image = path.basename(req.file.path);
 
-    image = "./upload/" + image;
+    image = "/upload/" + image;
     let pass = bcrypt.hashSync(password1, 8);
 
     r.regData(email1.trim(), pass.trim(), name1.trim(), contact1.trim(),specialization,experience,image,role,aid).then((result) => {
