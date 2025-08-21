@@ -1,21 +1,49 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
-import "../Css/admin.css";
+import {useLocation } from "react-router-dom";
+import "../Css/admin.css"; 
+import AdminHome from "./AdminHome";
+import Registration from "./Registration";
+import Error from "./Error";
+import ApiServices from "../services/ApiServices";
+import ShowData from "./showData";
 
 let Admin = () => {
+  let [role,setRole]=useState("");
+  let [show,setShow]=useState([]);
   let location = useLocation();
-  let data = location.state?.userdata || {};
-
-  // Sidebar toggle state
+  let data = location.state?.userdata || [];
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  return (
+
+  let setForm=(e)=>{
+    setRole(e);
+    setSidebarOpen(!sidebarOpen)
+  }
+   
+
+  let getData=(e)=>
+  {
+       ApiServices.getData(e,data.aid).then((data)=>{
+         setShow(data.data);
+       }).catch((err)=>{
+         console.log(err);
+       })
+     
+      setRole("show")
+      setSidebarOpen(!sidebarOpen);
+  }
+
+
+  if(data.length==0)
+  {
+    return (<Error/>)
+  }
+  else
+  {
+    return (
     <div className="admin">
       {/* Sidebar Toggle Button (Mobile Only) */}
-      <button
-        className="btn-toggle d-md-none"
-        onClick={() => setSidebarOpen(!sidebarOpen)}
-      >
+      <button className="btn-toggle d-md-none" onClick={() => setSidebarOpen(!sidebarOpen)}>
         <i className="fas fa-bars"></i>
       </button>
 
@@ -43,8 +71,9 @@ let Admin = () => {
         </div>
       </nav>
 
-      {/* Sidebar */}
-      <div className={`sidebar ${sidebarOpen ? "show" : ""}`}>
+     <div className="main-content">
+        <div className="slidebar">
+            <div className={`sidebar ${sidebarOpen ? "show" : ""}`}>
         <h4>
           <i className="fas fa-hospital"></i> Admin Panel
         </h4>
@@ -53,9 +82,9 @@ let Admin = () => {
 
         <ul className="nav flex-column">
           <li className="nav-item">
-            <a className="nav-link" href="/">
+            <button className="nav-link" value="admin" href="/" onClick={(e)=>setForm(e.target.value)}>
               <i className="fas fa-tachometer-alt"></i> Dashboard
-            </a>
+            </button>
           </li>
 
           {/* Doctors */}
@@ -64,12 +93,12 @@ let Admin = () => {
             <i className="fas fa-user-md"></i> Doctors
           </label>
           <div className="submenu">
-            <a className="nav-link" href="/reg_doc">
+            <button className="nav-link" value="doctor"  onClick={(e)=>setForm(e.target.value)} >
               ➕ Add Doctor
-            </a>
-            <a className="nav-link" href="/showdoctor?status=n">
+            </button>
+            <button className="nav-link" value="doctor" onClick={(e)=>getData(e.target.value)}>
               📋 Show Doctors
-            </a>
+            </button>
           </div>
 
           {/* Receptionists */}
@@ -100,48 +129,15 @@ let Admin = () => {
         </ul>
       </div>
 
-<div className="adminhome">
-     <div className="page-wrapper">
-    <div className="container py-5">
-      {/* <!-- Welcome Message --> */}
-      <div className="row justify-content-center">
-        <div className="col-md-10 col-lg-8">
-          <div className="card admin-card text-center">
-            <div className="card-content">
-              <div className="header-container mb-4">
-                <i className="fas fa-user-shield header-logo"></i>
-                <h2 className="text-dark mb-0">Welcome Admin</h2>
-              </div>
-              <div className="gradient-divider mx-auto mb-4"></div>
-              <h3>{data.name}</h3>
-            </div>
-          </div>
         </div>
-      </div>
-
-      {/* <!-- Admin Features --> */}
-      <div className="card-grid mt-5">
-        <div className="feature-card">
-          <i className="fas fa-user-md"></i>
-          <h4>Manage Staff</h4>
-          <p>Monitor doctors, nurses, and reception activities.</p>
+        <div className="content" >
+          {role=='doctor'?(<Registration role={["doctor",data]} />):role=='show'?(<ShowData data={show}/>):(<AdminHome name={data.name}/>)}
         </div>
-        <div className="feature-card">
-          <i className="fas fa-bed"></i>
-          <h4>Room Allocation</h4>
-          <p>Control and manage patient room assignments.</p>
-        </div>
-        <div className="feature-card">
-          <i className="fas fa-chart-line"></i>
-          <h4>Reports & Logs</h4>
-          <p>View hospital performance and activity logs.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+     </div>
     </div>
   );
+  }
+  
 };
 
 export default Admin;

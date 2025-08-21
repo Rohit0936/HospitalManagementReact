@@ -1,6 +1,7 @@
 import axios from "axios"
 import { data } from "react-router-dom";
 
+
 class ApiService
 {
  async savereg (regdata) {
@@ -16,6 +17,11 @@ class ApiService
   checkUser()
   {
     return axios.get("http://localhost:2000/checkUser",{withCredentials:true})
+  }
+
+  getData(...role)
+  {
+    return axios.get("http://localhost:2000/getData",{params:{role:role[0],aid:role[1]}});
   }
 }
 

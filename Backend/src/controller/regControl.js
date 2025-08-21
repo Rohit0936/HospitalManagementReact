@@ -1,4 +1,4 @@
-let regdata = require("../model/regmodel");
+let model = require("../model/regmodel");
 let regService = require("../services/regData");
 let login = require("../services/login");
 let bcrypt = require("bcrypt");
@@ -9,7 +9,9 @@ let jwt = require("jsonwebtoken");
 
 
 exports.regata = ((req, res) => {
-    let { name1, email1, contact1, password1 } = req.body;
+
+    //console.log(req.body)
+    let { name1, email1, contact1, password1 ,specialization,experience,role,aid} = req.body;
 
 
     let r = new regService();
@@ -18,13 +20,14 @@ exports.regata = ((req, res) => {
     image = "./upload/" + image;
     let pass = bcrypt.hashSync(password1, 8);
 
-    r.regData(email1.trim(), pass.trim(), name1.trim(), contact1.trim(), image).then((result) => {
+    r.regData(email1.trim(), pass.trim(), name1.trim(), contact1.trim(),specialization,experience,image,role,aid).then((result) => {
         res.send("true");
     }).catch((err) => {
         let filepath = path.join("C:\\ReactProject\\HospitalManagementReact\\frontend\\public", image)
         fs.unlink(filepath, (err) => {
             if (err) {
                 console.log(err);
+                res.send(err);
             }
             else {
 
@@ -66,7 +69,15 @@ exports.checkUser=((req,res)=>{
 
     let token=req.cookies.xyz;
     let data;
-    jwt.verify(token,process.env.SECRET_KEY,(err,result)=>{
+    
+    if(typeof(token)=='undefined')
+    {
+
+          res.send([]);
+    }
+    else
+    {   
+        jwt.verify(token,process.env.SECRET_KEY,(err,result)=>{
         if(err)
         {
             console.log(err);
@@ -78,13 +89,23 @@ exports.checkUser=((req,res)=>{
           data=[result.name,result.pass];
                
         }
-    })
-
-    let l = new login();
+        let l = new login();
     l.login(data[0]).then((result1)=>{ 
                // console.log(result1)
                 res.send(result1)
           }).catch((err)=>{
             console.log(err);
           })
+    })
+
+    }
+})
+
+exports.getData=((req,res)=>{
+
+      model.getData(req.query.role,req.query.aid).then((data)=>{
+        res.send(data);
+      }).catch((err)=>{
+        console.log(err);
+      })
 })
