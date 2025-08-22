@@ -13,8 +13,7 @@ let Admin = () => {
   let location = useLocation();
   let data = location.state?.userdata || [];
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
-
+  
   let setForm=(e)=>{
     setRole(e);
     setSidebarOpen(!sidebarOpen)
@@ -77,7 +76,13 @@ let Admin = () => {
         <h4>
           <i className="fas fa-hospital"></i> Admin Panel
         </h4>
-        {data.admin_image && <img src={data.admin_image} alt="Doctor" />}
+       {data.admin_image && (
+  <img 
+    src={`http://localhost:2000/public${data.admin_image}`} 
+    alt="Doctor" 
+  />
+)}
+
         <div className="admin-name">{data.name}</div>
 
         <ul className="nav flex-column">
