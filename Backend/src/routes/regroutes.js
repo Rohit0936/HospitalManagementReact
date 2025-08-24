@@ -19,8 +19,10 @@ let storage=multer.diskStorage({
 
 let upload=multer({storage:storage});
 
-router.post("/savereg",upload.single("image1"),controller.regata)
 router.post("/login",controller.login);
 router.get("/checkUser",controller.checkUser);
+router.get("/logout",controller.logout);
+router.post("/savereg",upload.single("image1"),controller.regata)
 router.get("/getData",controller.getData);
+
 module.exports=router;

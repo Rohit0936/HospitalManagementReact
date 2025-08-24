@@ -3,41 +3,41 @@
   padding-top: 25px;
 }
 
-.page-wrapper {
+.show .page-wrapper {
   width: 100%;
 }
 
 /* Search Bar */
-.search-bar {
+.show .search-bar {
   border-radius: 8px;
   padding: 8px 12px;
 }
 
-.search-input {
+.show .search-input {
   border-radius: 20px;
   padding: 10px 15px;
   border: 1px solid #ccc;
   transition: 0.3s;
 }
 
-.search-input:focus {
+.show .search-input:focus {
   border-color: #007bff;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
 }
 
 /* Doctor Card */
-.doctor-card {
+.show .doctor-card {
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.doctor-card:hover {
+.show .doctor-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
-.doctor-avatar {
+.show .doctor-avatar {
   width: 120px;
   height: 120px;
   border-radius: 50%;

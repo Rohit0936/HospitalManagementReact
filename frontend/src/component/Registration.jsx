@@ -4,10 +4,14 @@ import "../Css/reg.css";
 import ApiServices from "../services/ApiServices";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useState } from "react";
-import AdminHome from "../component/AdminHome";
+import Admin from "./Admin";
+
 
 let Reg = (props) => {
 
+  let aid=props.role[1].aid;
+  let st=props.st;
+  let setRole=props.setRole;
   let navigate = useNavigate();
   //Form Validation
 
@@ -59,13 +63,8 @@ let Reg = (props) => {
     nameEdit();
     email = true;
 
-    if (
-      (e.endsWith("@gmail.com") || e.endsWith("@gmail.in" || e.length == 0)) &&
-      email &&
-      !e.includes("..") &&
-      !e.includes("@@") &&
-      e.lastIndexOf("@") == e.indexOf("@")
-    ) {
+    if ((e.endsWith("@gmail.com") || e.endsWith("@gmail.in" || e.length == 0)) && email && !e.includes("..") && !e.includes("@@") && e.lastIndexOf("@") == e.indexOf("@"))
+       {
       //console.log(e,"====>",email)
       setEmail(true);
     } else {
@@ -153,9 +152,10 @@ let Reg = (props) => {
               {
                  navigate("/login");
               }
-              else
+              else if(role=="Doctor")
               {
-                
+                setRole("ShowData");
+                <Admin st={st} setRole={setRole}/>
               }
              
             } else {
@@ -186,8 +186,7 @@ let Reg = (props) => {
         <form onSubmit={savereg} encType="multipart/form-data">
           <div className="mb-3">
             {props.role[0] == "admin" ? (
-              <label htmlFor="" style={{ width: "100%", textAlign: "end" }}>
-                {" "}
+              <label htmlFor="" style={{ width: "100%", textAlign: "end" }}> 
                 <Link style={{ textDecoration: "none" }} to="/">
                   ❌
                 </Link>

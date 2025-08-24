@@ -4,35 +4,39 @@ import "../Css/admin.css";
 import AdminHome from "./AdminHome";
 import Registration from "./Registration";
 import Error from "./Error";
-import ApiServices from "../services/ApiServices";
+import cookie from "js-cookie"
 import ShowData from "./showData";
+import { useNavigate } from "react-router-dom";
+import ApiServices from "../services/ApiServices";
 
 let Admin = () => {
+  let navigate=useNavigate();
   let [role,setRole]=useState("");
   let [show,setShow]=useState([]);
   let location = useLocation();
   let data = location.state?.userdata || [];
+
   const [sidebarOpen, setSidebarOpen] = useState(false);
   
   let setForm=(e)=>{
     setRole(e);
     setSidebarOpen(!sidebarOpen)
   }
-   
 
-  let getData=(e)=>
-  {
-       ApiServices.getData(e,data.aid).then((data)=>{
-         setShow(data.data);
-       }).catch((err)=>{
-         console.log(err);
-       })
-     
-      setRole("show")
+  let getData=()=>{
+      setRole("ShowData");
       setSidebarOpen(!sidebarOpen);
   }
 
-
+  let logoutlogin=()=>{
+   ApiServices.logoutlogin().then((result)=>{
+      navigate("/")
+   }).catch((err)=>{
+    console.log(err);
+   })
+    
+  }
+   
   if(data.length==0)
   {
     return (<Error/>)
@@ -101,7 +105,7 @@ let Admin = () => {
             <button className="nav-link" value="doctor"  onClick={(e)=>setForm(e.target.value)} >
               ➕ Add Doctor
             </button>
-            <button className="nav-link" value="doctor" onClick={(e)=>getData(e.target.value)}>
+            <button className="nav-link" value="doctor" onClick={getData}>
               📋 Show Doctors
             </button>
           </div>
@@ -127,16 +131,16 @@ let Admin = () => {
           </li>
 
           <li className="nav-item">
-            <a className="nav-link" href="/logout">
+            <button className="nav-link" href="/logout" onClick={logoutlogin}>
               <i className="fas fa-sign-out-alt"></i> Logout
-            </a>
+            </button>
           </li>
         </ul>
       </div>
 
         </div>
         <div className="content" >
-          {role=='doctor'?(<Registration role={["doctor",data]} />):role=='show'?(<ShowData data={show}/>):(<AdminHome name={data.name}/>)}
+          {role=='doctor'?(<Registration role={["doctor",data]} st={role} setRole={setRole}/>):role=='ShowData'?(<ShowData id={[data.aid,"doctor"]}/>):(<AdminHome name={data.name}/>)}
         </div>
      </div>
     </div>

@@ -23,7 +23,7 @@ exports.regata = ((req, res) => {
     r.regData(email1.trim(), pass.trim(), name1.trim(), contact1.trim(),specialization,experience,image,role,aid).then((result) => {
         res.send("true");
     }).catch((err) => {
-        let filepath = path.join("C:\\ReactProject\\HospitalManagementReact\\frontend\\public", image)
+        let filepath = path.join("C:\\ReactProject\\HospitalManagementReact\\Backend\\public", image)
         fs.unlink(filepath, (err) => {
             if (err) {
                 console.log(err);
@@ -109,3 +109,8 @@ exports.getData=((req,res)=>{
         console.log(err);
       })
 })
+
+exports.logout=((req,res)=>{
+res.clearCookie("xyz");
+res.send("true");
+ })

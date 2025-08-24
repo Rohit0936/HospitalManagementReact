@@ -25,6 +25,11 @@ class ApiService
   {
     return axios.get(url+"/getData",{params:{role:role[0],aid:role[1]}});
   }
+
+  logoutlogin()
+  {
+    return axios.get(url+"/logout",{withCredentials:true});
+  }
 }
 
 export default new ApiService();
