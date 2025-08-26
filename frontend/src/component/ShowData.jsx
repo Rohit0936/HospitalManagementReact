@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../Css/ShowData.css";
+import "../Css/showData.css";
 import ApiServices from "../services/ApiServices";
 
 let ShowData = (props) => {

@@ -5,7 +5,7 @@ import AdminHome from "./AdminHome";
 import Registration from "./Registration";
 import Error from "./Error";
 import cookie from "js-cookie"
-import ShowData from "./showData";
+import ShowData from "./ShowData";
 import { useNavigate } from "react-router-dom";
 import ApiServices from "../services/ApiServices";
 

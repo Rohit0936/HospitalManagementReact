@@ -5,8 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import About from "./component/About.jsx";
 import Registration from "./component/Registration.jsx";
 import Loginuser from "./component/Loginuser.jsx";
-import Admin from "./component/Admin.jsx";
-import ShowData from "./component/showData.jsx";
+import Admin from "./component/Admin.jsx";         
 
 let App=()=>{
    return<>
