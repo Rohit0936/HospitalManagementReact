@@ -54,7 +54,7 @@ let ShowData = (props) => {
                       <div className="card-body d-flex flex-column align-items-center">
                         <div className="doctor-avatar">
                           <img
-                            src={`http://localhost:2000/public${item.doctor_image}`}
+                            src={`https://hospitalmanagementreact-backend-6.onrender.com/public${item.doctor_image}`}
                             alt={`Dr. ${item.doctor_name}`}
                             className="img-fluid"
                           />

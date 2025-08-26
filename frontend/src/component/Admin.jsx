@@ -82,7 +82,7 @@ let Admin = () => {
         </h4>
        {data.admin_image && (
   <img 
-    src={`http://localhost:2000/public${data.admin_image}`} 
+    src={`https://hospitalmanagementreact-backend-6.onrender.com/public${data.admin_image}`} 
     alt="Doctor" 
   />
 )}
