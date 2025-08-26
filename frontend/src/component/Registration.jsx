@@ -9,7 +9,6 @@ import Admin from "./Admin";
 
 let Reg = (props) => {
 
-  let aid=props.role[1].aid;
   let st=props.st;
   let setRole=props.setRole;
   let navigate = useNavigate();
