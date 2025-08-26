@@ -1,7 +1,7 @@
 import axios from "axios"
 import { data } from "react-router-dom";
 
-let url="https://hospitalmanagementreact-backend-6.onrender.com";
+let url="http://localhost:2000";
 class ApiService
 {
   
