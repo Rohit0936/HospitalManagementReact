@@ -1,0 +1,30 @@
+let express=require("express");
+let router=express.Router();
+let path=require("path");
+let multer=require("multer");
+let controller=require("../controller/regControl.js");
+
+let storage=multer.diskStorage({
+    destination:function(req,file,cb)
+    {
+        cb(null,'public/upload');
+    },
+
+    filename:function(req,file,cb)
+    {
+       // console.log(Date.)
+        cb(null,Date.now()+path.extname(file.originalname));
+    }
+})
+
+//console.log(hello);
+let upload=multer({storage:storage});
+router.post("/login",controller.login);
+router.get("/checkUser",controller.checkUser);
+router.get("/logout",controller.logout);
+router.post("/savereg",upload.single("image1"),controller.regata)
+router.get("/getData",controller.getData);
+router.put("/updateUser",controller.updateUser);
+router.delete("/delete",controller.delete);
+
+module.exports=router;

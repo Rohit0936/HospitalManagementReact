@@ -1,0 +1,21 @@
+--------------------------------------Add User and Admin ---------------------------------------------------
+create procedure regdata(email varchar(100),password varchar(100),name varchar(100),contact varchar(100),specialization varchar(100),experience varchar(100),image varchar(100),role varchar(100))
+     begin
+     insert into user values('0',email,password,contact,role);
+     select last_insert_id() into uid;
+     if role='Admin' then
+     insert into admin values('0',name,email,image,uid);
+     end if;
+     if role='Doctor' then
+     insert into doctor values('0',name,email,specialization,contact,experience,image,uid,aid);
+     end if;
+     end//
+
+
+-------------------------------------Get data all --------------------------------------------------------------
+    create procedure getData(role varchar(100),aid int)
+        begin
+        if role='doctor' then
+    select d.did,doctor_name,doctor_email,doctor_specialization,doctor_Experience,doctor_image,u.contact,u.uid,a.aid from user u inner join doctor d on d.uid=u.uid inner join admin a on a.aid=d.aid where u.role=role && d.aid=aid;
+        end if;
+        end //
