@@ -1,0 +1,215 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.admin .navbar-custom {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background-color: #0277bd; /* Calm hospital blue */
+      color: white;
+      z-index: 1100;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+.admin .navbar-custom .navbar-brand,
+    .navbar-custom .navbar-text,
+    .navbar-custom .nav-link {
+      color: #ffffff !important;
+     
+      font-weight: bold;
+    }
+
+.admin .navbar-toggler {
+      background-color: #01579b;
+      border: none;
+      color: white;
+    }
+
+    /* Toggle button for sidebar (for small devices) */
+.admin .btn-toggle {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background-color: #0277bd;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      z-index: 1150;
+    }
+
+    /* Sidebar */
+.admin .sidebar {
+      position: fixed;
+      top: 60px;
+      left: 0;
+      height: calc(100vh - 60px);
+      width: 250px;
+      background-color: #1e293b;
+      padding-top: 20px;
+      color: #fff;
+      overflow-y: auto;
+      z-index: 1050;
+      transition: transform 0.3s ease;
+    }
+
+.admin .sidebar h4 {
+      text-align: center;
+      color: #4fc3f7;
+      margin-bottom: 30px;
+      font-weight: bold;
+    }
+
+.admin .sidebar .nav-link {
+      color: #cbd5e1;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+
+.admin .sidebar .nav-link:hover,
+    .sidebar .nav-link.active {
+      background-color: #334155;
+      color: #4fc3f7;
+    }
+
+.admin .sidebar .nav-link i {
+      margin-right: 10px;
+    }
+
+.admin .submenu {
+      display: none;
+      flex-direction: column;
+      padding-left: 30px;
+    }
+
+.admin .submenu a {
+      font-size: 14px;
+      color: #94a3b8;
+      padding: 6px 0;
+      text-decoration: none;
+    }
+
+.admin .submenu a:hover {
+      color: #f1f5f9;
+    }
+
+.admin input[type="checkbox"] {
+      display: none;
+    }
+
+.admin input[type="checkbox"]:checked + label + .submenu {
+      display: flex;
+    }
+
+.admin .main-content {
+      margin-left: 250px;
+      padding-top: 20px;
+      transition: margin-left 0.3s ease;
+    
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 768px) {
+      .admin .sidebar {
+        transform: translateX(-100%);
+        width: 100%;
+      }
+
+      .admin .sidebar.show {
+        transform: translateX(0);
+      }
+
+      .admin .main-content {
+        margin-left: 0;
+        padding-top: 50px;
+       
+      }
+    }
+
+    @media (max-width: 768px) {
+  .admin .navbar-custom {
+    display: none;
+  }
+
+  
+}
+
+/* Mobile Top Bar */
+.admin .mobile-bar {
+  display: none;
+  background-color: #0277bd;
+  color: white;
+  height: 60px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1100;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+  .admin .sidebar img {
+      display: block;
+      margin: 0 auto;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #facc15;
+    }
+
+    .admin .admin-name {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 10px;
+      font-size: 16px;
+      color: #facc15;
+    }
+
+/* Show Mobile Bar only on small screens */
+@media (max-width: 768px) {
+  .admin .navbar-custom {
+    display: none;
+  }
+
+  .admin .mobile-bar {
+    display: flex;
+  }
+}
+
+/* Responsive iframe container */
+.iframe-container {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* adjust depending on your navbar height */
+  overflow: hidden;           /* hide any outer scrollbars */
+}
+
+.iframe-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;               
+  overflow: hidden;           /* hide iframe scrollbar */
+  scrollbar-width: none;      /* Firefox */
+}
+
+/* Chrome, Safari */
+.iframe-container iframe::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+

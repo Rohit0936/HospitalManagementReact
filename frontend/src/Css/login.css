@@ -1,0 +1,136 @@
+/* Page Centering */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-image: url("./image/formbg.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;       /* Makes image fill the screen */
+  background-position: center;  /* Keeps center focused */
+  background-attachment: fixed; /* Optional: nice parallax effect on scroll */
+
+  padding: 7px;
+}
+
+
+/* Card Wrapper */
+.login-card {
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  max-width: 900px;
+  width: 100%;
+}
+
+/* Left Section */
+.welcome-section {
+  background: rgb(231, 5, 43);
+  color: white;
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.welcome-section h2 {
+  margin-bottom: 10px;
+}
+
+.welcome-section p {
+  line-height: 1.5;
+}
+
+/* Right Section (Form) */
+.form-section {
+  flex: 1;
+  padding: 30px;
+}
+
+.form-section h1 {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  outline: none;
+}
+
+.form-section input[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background: rgb(10, 97, 197);
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-page .msg
+{ 
+   position:relative;
+ width:100%;
+ display:flex;
+ justify-content: center;
+ color: black;
+ /* background-color: pink; */
+ border-radius: 10px;
+ align-items: center;
+  height:40px;
+} 
+
+#msgcolor{
+  background-color: pink;
+}
+
+.signup-text {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.signup-text a {
+  color:blue;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Responsive for Tablet */
+@media (max-width: 992px) {
+  .login-card {
+    flex-direction: column;
+    max-width: 600px;
+  }
+  .welcome-section {
+    text-align: center;
+  }
+}
+
+/* Mobile View */
+@media (max-width: 576px) {
+  .login-card {
+    max-width: 100%;
+  }
+  .welcome-section,
+  .form-section {
+    padding: 20px;
+  }
+}

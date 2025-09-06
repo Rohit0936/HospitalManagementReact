@@ -1,0 +1,113 @@
+#reg
+{
+    padding: 30px;
+   background-image: linear-gradient(to left,rgb(147, 147, 248) ,rgb(247, 207, 207) );
+}
+#reg form{
+    
+    width: 40%;
+    margin: auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1); /* softer shadow */
+
+}
+
+#reg h1{
+    
+    text-align: center;
+}
+
+#reg input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#reg .image img{
+    width: 100px;
+    height: 100px;
+}
+
+@media (max-width: 955px) {
+    #reg form{
+   margin: 0;
+   width: auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#reg{
+    min-height: 100vh;
+}
+}   
+
+/* Doctor rection etc css */
+
+#role
+{
+   padding: 90px;
+   background-image: linear-gradient(to left,rgb(147, 147, 248) ,rgb(247, 207, 207) );
+}
+#role form{
+    
+    width: 65%;
+    margin-left:20% ;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1); /* softer shadow */
+
+}
+
+#role h1{
+    margin-left: 0%;
+    text-align: center;
+}
+
+#role input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#role .image img{
+    width: 100px;
+    height: 100px;
+}
+
+@media (max-width: 955px) {
+    #role h1{
+        margin-left: 0;
+    }
+    #role form{
+   margin: 0;
+   width: 100%;
+   padding: 20px;
+    border-radius: 10px;
+}
+#role
+{
+   padding: 100px;
+   width: 100%;
+   background-image: linear-gradient(to left,rgb(147, 147, 248) ,rgb(247, 207, 207) );
+}
+}
+
+@media (max-width: 555px) {
+    #role h1{
+        margin-left: 0;
+        margin-top: 40px;
+    }
+    #role{
+ padding: 5px;
+   background-image: linear-gradient(to left,rgb(147, 147, 248) ,rgb(247, 207, 207) );
+    }
+
+    #role form{
+    margin: 0;
+     width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+}
